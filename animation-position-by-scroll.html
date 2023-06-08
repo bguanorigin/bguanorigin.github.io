@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Position by Scroll</title>
+    <style>
+        body{
+            margin:0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero{
+            background-image: url(./img/sunset-sky.jpg);
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            position:relative;
+            margin-bottom:200vh;
+            overflow: hidden;
+        }
+        .building-container{
+            position:absolute;
+            bottom:-100px;
+            right:10%;
+        }
+        .building{
+            position:relative;
+            z-index:10;
+        }
+        .message{
+            margin-top:26vh;
+            color: white;
+            position: relative;
+        }
+        h1, p{
+            max-width:600px;
+            text-shadow: 0 0 6px rgba(0,0,5px, 0.2);
+        }
+        .object-container{
+            position:absolute;
+            bottom:45vh;
+            right:20%;
+        }
+        .object{
+            position:relative;
+            width:120px;
+            height:120px;
+            border-radius: 120px;
+            background-image: radial-gradient(rgb(255, 255, 255), rgba(210, 125, 6, 0.1))
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="message container">
+            <h1>Position Animation Triggered by Scrolling</h1>
+            <p>Building goes up 90px. Hero Message goes down 150px. Circle goes down 400px.</p>
+            <a class="btn" href="#">Button</a>
+        </div>
+        <div class="building-container">
+            <img class="building" src="./img/building.png" alt="">
+        </div>
+        <div class="object-container"><div class="object"></div></div>
+    </div>
+    <script>
+        const hero = document.querySelector('.hero')
+        //let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', ()=>{
+
+            // For scroll
+
+            // Hero offset top
+            const heroOffsetTop = hero.getBoundingClientRect().top
+
+            // Height of hero
+            const heroHeight = hero.offsetHeight
+
+            // The height of the visible part of the hero
+            const heightInWindow = heroOffsetTop + heroHeight
+
+            // Window height
+            const windowHeight = window.innerHeight
+
+            // For scroll direction
+            // const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+
+            // how much scroll has completed 0 - 1
+            const scrollPercentage = (windowHeight - heightInWindow) / windowHeight
+
+            // For animation
+            const building = document.querySelector('.building')
+            const object = document.querySelector('.object')
+            const message = document.querySelector('.message')
+
+            // Trigger
+            if(heightInWindow <= windowHeight && heightInWindow > 0){
+                console.log('start')
+                building.style.top = -90 * scrollPercentage + 'px'
+                object.style.top = 400 * scrollPercentage + 'px'
+                message.style.top = -150 * scrollPercentage + 'px'
+
+                // Scroll direction
+                // if(scrollTop > lastScrollTop){
+                //     console.log('scroll down: ')
+                // }
+                // if(scrollTop < lastScrollTop){
+                //     console.log('scroll up: ')
+                // }
+                // lastScrollTop = scrollTop <= 0 ? 0 : scrollTop
+            }
+            
+        })
+    </script>
+</body>
+</html>

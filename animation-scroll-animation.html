@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Scroll Animation</title>
+    <style>
+        div{
+            background-color:black;
+            margin-bottom:600px;
+            height:400px;
+            opacity:0;
+            transition: opacity 1s ease;
+            border:1px solid black;
+            color: white;
+        }
+        .scroll-animate{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>One Time Scroll Animation</h1>
+    <ul>
+        <li>Vanilla Javascript only</li>
+        <li>Add attribute scroll-animation to any element that want to have the animation</li>
+        <li>When element is scrolled to view port, class 'scroll-animation' will be added to the element</li>
+        <li>Animation should be done by CSS (transition or animation + @keyframes) using the class: .scroll-animation</li>
+    </ul>
+    <div scroll-animation>Box 1</div>
+    <div scroll-animation>Box 2</div>
+    <div scroll-animation>Box 3</div>
+    <div scroll-animation>Box 4</div>
+    <div scroll-animation>Box 5</div>
+
+    <script>
+        
+        class ScrollAnimation{
+
+            constructor(){
+                this.init()
+            }
+
+            init(){
+                this.startAnimate()
+                window.addEventListener('scroll', () => {
+                    this.startAnimate()
+                })
+            }
+
+            startAnimate(){
+                const els = document.querySelectorAll('[scroll-animation]')
+                if(!els) return
+
+                els.forEach((el)=>{
+                    if(el.classList.contains('scroll-animate')){
+                        return;
+                    }
+                    const elOffsetTop = el.getBoundingClientRect().top
+                    const windowHeight = window.innerHeight
+                    const inDistance = 0.2 * windowHeight // start animation when element is in 0.x height of the window
+                    if(elOffsetTop > 0 && elOffsetTop + inDistance < windowHeight){
+                        el.classList.add('scroll-animate')
+                    }
+                })
+            }
+
+        }
+
+        new ScrollAnimation()
+
+    </script>
+
+</body>
+</html>
