@@ -1,0 +1,52 @@
+// Support all browsers except IE
+@mixin image-ratio{
+    height: 0;
+    position: relative;
+    display: block;
+    width:100%;
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+}
+.image-3-1{
+    @include image-ratio;
+    padding-bottom: 33%;
+}
+.image-2-1{
+    @include image-ratio;
+    padding-bottom: 50%;
+}
+.image-7-4{
+    @include image-ratio;
+    padding-bottom: 57%;
+}
+.image-3-2{
+    @include image-ratio;
+    padding-bottom: 67%;
+}
+.image-4-3{
+    @include image-ratio;
+    padding-bottom: 75%;
+}
+.image-1-1{
+    @include image-ratio;
+    padding-bottom: 100%;
+}
+.image-3-4{
+    @include image-ratio;
+    padding-bottom: 133%;
+}
+.image-2-3{
+    @include image-ratio;
+    padding-bottom: 150%;
+}
+.image-1-2{
+    @include image-ratio;
+    padding-bottom: 200%;
+}

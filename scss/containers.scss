@@ -1,0 +1,69 @@
+/*
+* Containers
+- The larger containers have multiple break points.
+- container-sm: 700px
+- container-md: 900px
+- container: 1120px
+- container-lg: 1240px
+- container-xl: 1440px
+- container-fluid: 100%
+*/
+
+@mixin container-padding{
+    padding-left:28px;
+    padding-right:28px;
+}
+
+@mixin container-center{
+    padding-left:0;
+    padding-right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.container-fluid{
+    @include container-padding;
+}
+
+.container-sm, 
+.container-md, 
+.container, 
+.container-lg, 
+.container-xl{
+    @include container-padding;
+    @media(min-width:768px){
+        max-width:700px !important; 
+        @include container-center;
+    }
+}
+
+.container-md, 
+.container, 
+.container-lg, 
+.container-xl{
+    @media(min-width:1024px){
+        max-width:900px !important; 
+    }
+}
+
+.container, 
+.container-lg, 
+.container-xl{
+    @media(min-width:1280px){
+        max-width:1120px !important;
+    }
+}
+
+.container-lg, 
+.container-xl{
+    @media(min-width:1440px){
+        max-width:1240px !important;
+    }
+}
+
+.container-xl{
+    @media(min-width:1600px){
+        max-width:1480px !important;
+    }
+}
+
