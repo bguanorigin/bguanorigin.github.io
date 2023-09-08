@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="test" action="" class="example-form">
+        <input type="text">
+        <input type="submit" value="submit">
+    </form>
+    <!-- Qualified -->
+    <script>
+    window.addEventListener("submit", (e) => {
+        e.preventDefault()
+ 
+        if (e.target.matches(".example-form")) {
+            console.log('it is the right form')
+        }
+    });
+  </script>
+  <!-- End Qualified -->
+</body>
+</html>

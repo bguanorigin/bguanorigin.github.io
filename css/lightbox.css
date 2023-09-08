@@ -1,0 +1,134 @@
+.open-lightbox {
+  cursor: pointer;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -10;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.lightbox .lightbox-inner {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  position: relative;
+  overflow-y: visible;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .lightbox .lightbox-inner {
+    width: 90vw;
+    height: auto;
+    max-width: 1200px;
+    max-height: clamp(350px, 90vh - 80px, 600px);
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+  }
+  .lightbox .lightbox-inner.lightbox-inner-md {
+    max-width: 850px;
+  }
+  .lightbox .lightbox-inner.lightbox-inner-sm {
+    max-width: 650px;
+  }
+}
+.lightbox .lightbox-inner .lightbox-content {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding: 50px 50px;
+}
+@media (min-width: 768px) {
+  .lightbox .lightbox-inner .lightbox-content {
+    max-height: calc(90vh - 80px);
+  }
+  .lightbox .lightbox-inner .lightbox-content.lightbox-media-text {
+    display: flex;
+  }
+}
+.lightbox .lightbox-inner .close-lightbox {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 99px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox .lightbox-inner .close-lightbox svg {
+  width: 20px;
+}
+.lightbox .lightbox-inner .close-lightbox svg path {
+  fill: #444444;
+}
+.lightbox .lightbox-inner .close-lightbox:hover {
+  opacity: 0.9;
+}
+@media (min-width: 768px) {
+  .lightbox .lightbox-inner .close-lightbox {
+    right: 12px;
+    top: 12px;
+  }
+}
+.lightbox .lightbox-inner .lightbox-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+@media (min-width: 768px) {
+  .lightbox .lightbox-inner .lightbox-left {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 30%;
+  }
+}
+.lightbox .lightbox-inner .lightbox-right {
+  max-width: 700px;
+  margin: 24px auto 0;
+}
+@media (min-width: 768px) {
+  .lightbox .lightbox-inner .lightbox-right {
+    max-width: 1000px;
+    margin: 0;
+    width: 70%;
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 40px;
+    position: relative;
+  }
+}
+.lightbox .lightbox-inner .lightbox-right .lightbox-right-header {
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .lightbox .lightbox-inner .lightbox-right .lightbox-right-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding-bottom: 4px;
+    text-align: left;
+  }
+}
+.lightbox.lightbox-open {
+  z-index: 200;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=lightbox.css.map */
